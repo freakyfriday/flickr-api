@@ -3,7 +3,7 @@ var router = express.Router();
 var photosController = require("../controllers/photos");
 var _ = require('lodash');
 
-/* GET flickr public photos. */
+/* Retrieve flickr public photos. */
 router.get('/public', function(req, res, next) {
 
   photosController.getPublicPhotos((err, data) => {
@@ -16,6 +16,7 @@ router.get('/public', function(req, res, next) {
 
 });
 
+/* Retrieve flickr search photos. */
 router.post('/search', function(req, res, next) {
 
   let searchString = req.body.searchString;

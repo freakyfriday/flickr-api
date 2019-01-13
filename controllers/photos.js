@@ -21,12 +21,14 @@ exports.getPublicPhotos = (done) => {
             }
             catch(e)
             {
+                //remove JSONP padding
                 let startPos = body.indexOf('({');
                 let endPos = body.indexOf('})');
                 let jsonString = body.substring(startPos+1, endPos+1);
                 json = JSON.parse(jsonString);
             }
 
+            //test results returned
             if (json.stat && json.stat == 'fail'){
                 done(new Error('Flickr API Error: ' + json.message))
             }else{
@@ -58,6 +60,7 @@ exports.searchPublicPhotos = (searchString, done) => {
             }
             catch(e)
             {
+                //remove JSONP padding
                 let startPos = body.indexOf('({');
                 let endPos = body.indexOf('})');
                 let jsonString = body.substring(startPos+1, endPos+1);
